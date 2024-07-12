@@ -97,7 +97,7 @@ class Window_Attention(nn.Module):
 
         if self.shifted:
             att_weights[:, :, -nw_w:] += self.upper_lower_mask
-            att_weights[:, :, nw_w-1::nw_w]
+            att_weights[:, :, nw_w-1::nw_w] += self.left_right_mask
             
         att_weights = att_weights.softmax(dim=-1)
         
